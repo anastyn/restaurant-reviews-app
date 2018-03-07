@@ -42,6 +42,13 @@ main {
   display: flex;
   flex-wrap: wrap;
 }
+#results-container {
+  /* Google Map has z-index 1.
+    Setting this to a higher value so that the effects on this element 
+    such as the box-shadow are visible and above the Google Map.
+  */
+  z-index: 2;
+}
 #map-container, #results-container {
   width: 100%;
 }
@@ -260,6 +267,7 @@ nav h1 a {
     width: 300px;
     height: calc(100vh - 40px - 30px); /* viewport height - header height - footer height */
     overflow: scroll; /* add a scrollbar */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   }
   #map-container {
     width: calc(100% - 300px); /* full width minus the width of #results-container in order to consume all remaining space */
