@@ -1,20 +1,15 @@
 @charset "utf-8";
 /* CSS Document */
 
-body,td,th,p{
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10pt;
-	color: #333;
-	line-height: 1.5;
-}
 body {
 	background-color: #fdfdfd;
   margin: 0;
+  font-size: 15px;
 }
-ul, li {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10pt;
+body,td,th,p{
 	color: #333;
+  line-height: 1.5;
+  font-family: 'Roboto', sans-serif;
 }
 a {
 	color: orange;
@@ -28,7 +23,6 @@ a img{
 	border: none 0px #fff;
 }
 h1, h2, h3, h4, h5, h6 {
-  font-family: Arial, Helvetica, sans-serif;
   margin: 0 0 20px;
 }
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -36,6 +30,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 header {
   line-height: 40px;
+  font-family: 'Playfair Display', serif;
 }
 main {
   background-color: #f3f3f3;
@@ -52,7 +47,6 @@ main {
 #map-container, #results-container {
   width: 100%;
 }
-
 footer {
   background-color: #444;
   color: #aaa;
@@ -86,7 +80,6 @@ nav h1 a {
     background-color: #eee;
     font-size: 17px;
     margin: 0;
-    /* width: calc(50% - 80px); */
 }
 
 /* Display list items side by side */
