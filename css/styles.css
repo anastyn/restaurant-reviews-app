@@ -260,6 +260,7 @@ nav h1 a {
     width: 300px;
     height: calc(100vh - 40px - 30px); /* viewport height - header height - footer height */
     overflow: scroll; /* add a scrollbar */
+    overflow-x: hidden; /* hide horizontal scrollbar */
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   }
   #map-container {
