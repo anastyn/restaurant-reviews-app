@@ -2,14 +2,14 @@
 /* CSS Document */
 
 body {
-	background-color: #fdfdfd;
+  font-family: 'Roboto', sans-serif;
+  background-color: #fdfdfd;
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
+  line-height: 1.5em;
 }
 body,td,th,p{
 	color: #333;
-  line-height: 1.5;
-  font-family: 'Roboto', sans-serif;
 }
 a {
 	color: orange;
@@ -78,7 +78,6 @@ nav h1 a {
     padding: 10px 40px 16px;
     list-style: none;
     background-color: #eee;
-    font-size: 17px;
     margin: 0;
 }
 
@@ -199,7 +198,7 @@ nav h1 a {
   line-height: 1.1;
 }
 #restaurant-img {
-	width: 90%;
+	width: 100%;
 }
 #restaurant-address {
   font-size: 12pt;
@@ -215,15 +214,12 @@ nav h1 a {
   padding: 2px 0;
   text-align: center;
   text-transform: uppercase;
-	width: 90%;
+  width: 100%;
 }
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
   padding: 30px 40px 30px;
-}
-#reviews-container {
-  padding: 30px 40px 80px;
 }
 #reviews-container h2 {
   color: #f58500;
@@ -238,7 +234,7 @@ nav h1 a {
 }
 #reviews-list li {
   background-color: #fff;
-    border: 2px solid #f3f3f3;
+  border: 2px solid #f3f3f3;
   display: block;
   list-style-type: none;
   margin: 0 0 30px;
@@ -257,14 +253,15 @@ nav h1 a {
 @media screen and (min-width: 600px) {
   #results-container {
     order: -1; /* move the container to the left */
-    width: 300px;
+    width: 400px;
     height: calc(100vh - 40px - 30px); /* viewport height - header height - footer height */
     overflow: scroll; /* add a scrollbar */
-    overflow-x: hidden; /* hide horizontal scrollbar */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow:    0 0 20px rgba(0, 0, 0, 0.3);
+    box-shadow:         0 0 20px rgba(0, 0, 0, 0.3);
   }
   #map-container {
-    width: calc(100% - 300px); /* full width minus the width of #results-container in order to consume all remaining space */
+    width: calc(100% - 400px); /* full width minus the width of #results-container in order to consume all remaining space */
   }
   #map {
     height: 100%;
@@ -273,10 +270,10 @@ nav h1 a {
 
 @media screen and (min-width: 900px) {
   #results-container {
-    width: 450px;
+    width: 550px;
   }
   #map-container {
-    width: calc(100% - 450px); /* full width minus the width of #results-container in order to consume all remaining space */
+    width: calc(100% - 550px); /* full width minus the width of #results-container in order to consume all remaining space */
   }
   #map {
     height: 100%;
