@@ -239,12 +239,36 @@ nav h1 a {
   list-style-type: none;
   margin: 0 0 30px;
   overflow: hidden;
-  padding: 0 20px 20px;
   position: relative;
-  width: 85%;
+  border-radius: 25px 0 25px 0;
 }
-#reviews-list li p {
-  margin: 0 0 10px;
+#reviews-list li .title {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 0;
+  background-color: #333;
+}
+#reviews-list li .title .name {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: white;
+}
+#reviews-list li .title .date {
+  color: #aaa;
+}
+#reviews-list li .content {
+  padding: 10px 20px;
+}
+#reviews-list li .rating {
+  background-color: orange;
+  padding: 5px 15px;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  display: inline-block;
+  letter-spacing: 1px;
 }
 #restaurant-hours td {
   color: #666;
