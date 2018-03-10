@@ -34,7 +34,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 	display: block;
 }
 header {
-  height: 40px;
+  min-height: 40px;
   line-height: 40px;
   font-family: 'Playfair Display', serif;
 }
@@ -57,7 +57,7 @@ main {
   z-index: 2;
 }
 footer {
-  height: 30px;
+  min-height: 30px;
   background-color: #444;
   color: #aaa;
   font-size: 8pt;
@@ -117,8 +117,8 @@ nav h1 a {
 /* ====================== Map ====================== */
 #map {
   width: 100%;
-  /* take 60% of the viewport height */
-  height: 60vh;
+  /* take 50% of the viewport height */
+  height: 50vh;
   background-color: #ccc;
 }
 /* ====================== Restaurant Filtering ====================== */
