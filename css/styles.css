@@ -184,6 +184,10 @@ nav h1 a {
   margin: 0;
   font-size: 1em;
 }
+#restaurants-list li div {
+  width: 100%;
+  text-align: center;
+}
 #restaurants-list li a {
   background-color: #ad5e02;
   border-bottom: 3px solid #eee;
@@ -294,7 +298,11 @@ nav h1 a {
 }
 
 @media screen and (min-width: 425px) {
-  /** add more padding for larger screens */
+  /* move the details link to the left */
+  #restaurants-list li div {
+    text-align: left;
+  }
+  /* add more padding for larger screens */
   #restaurant-container, #reviews-container {
     padding: 30px 40px 30px;
   }
