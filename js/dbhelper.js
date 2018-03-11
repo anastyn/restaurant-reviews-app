@@ -8,8 +8,7 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-    const port = 8000 // Change this to your server port
-    return `http://localhost:${port}/data/restaurants.json`;
+    return 'https://anastyn.github.io/restaurant-reviews-app/data/restaurants.json';
   }
 
   /**
@@ -150,7 +149,7 @@ class DBHelper {
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-    const imgDir = '/img';
+    const imgDir = '/restaurant-reviews-app/img';
     const original = restaurant.photograph;
     const [ imageName, imageExtension ] = original.split('.');
 
