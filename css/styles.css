@@ -231,7 +231,7 @@ nav h1 a {
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 30px 40px 30px;
+  padding: 30px 5px 30px;
 }
 #reviews-container h2 {
   color: #f58500;
@@ -291,6 +291,13 @@ nav h1 a {
 }
 #restaurant-hours td:first-child {
   padding-left: 0;
+}
+
+@media screen and (min-width: 425px) {
+  /** add more padding for larger screens */
+  #restaurant-container, #reviews-container {
+    padding: 30px 40px 30px;
+  }
 }
 
 @media screen and (min-width: 600px) {
