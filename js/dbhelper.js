@@ -168,6 +168,9 @@ class DBHelper {
    * Map marker for a restaurant.
    */
   static mapMarkerForRestaurant(restaurant, map) {
+    if (!map) {
+      return;
+    }
     const marker = new google.maps.Marker({
       position: restaurant.latlng,
       title: restaurant.name,

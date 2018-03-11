@@ -1,3 +1,11 @@
+if (navigator.serviceWorker) {
+    navigator.serviceWorker.register('sw.js')
+      .then(reg => console.log('Successfully registered Service Worker.', reg))
+      .catch(err => console.error("Could not register Service Worker.", err));
+} else {
+  console.log('Service Worker functionality is not available.');
+}
+
 let restaurants,
   neighborhoods,
   cuisines
@@ -171,6 +179,9 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
     const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
+    if (!marker) {
+      return;
+    }
     google.maps.event.addListener(marker, 'click', () => {
       window.location.href = marker.url
     });
