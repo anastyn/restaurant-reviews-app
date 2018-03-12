@@ -1,11 +1,13 @@
 // trigger rendering of the function normally invoked by the window.initMap() callback
 // updateRestaurants is available on the main page, fillBreadcrumb is available on the reviews page
-if (updateRestaurants) {
+if (typeof updateRestaurants !== 'undefined') {
   updateRestaurants();
 } else {
-  fillBreadcrumb();
+  fetchRestaurantFromURL(error => {
+    if (error) { // Got an error!
+      console.error(error);
+    } else {
+      fillBreadcrumb();
+    }
+  })
 }
-
-// set map not available overlay instead of the #map content
-const mapElement = document.getElementById('#map');
-console.log(mapElement);
