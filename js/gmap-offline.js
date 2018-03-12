@@ -11,3 +11,10 @@ if (typeof updateRestaurants !== 'undefined') {
     }
   })
 }
+
+// set map not available overlay instead of the #map content
+const mapToHide = document.getElementById('map-container');
+mapToHide.className = 'hidden';
+
+const offlineOverlay = document.getElementById('offline-overlay-container');
+offlineOverlay.classList.remove('hidden');
