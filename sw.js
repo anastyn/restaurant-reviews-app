@@ -6,7 +6,7 @@
  * Methods below use event.waitUntil, which enqueues other events such as fetch while the parameter function is running
  *
  * */
-const staticCacheName = 'restaurant-reviews-static-v4';
+const staticCacheName = 'restaurant-reviews-static-v1';
 
 /**
  * Cache all static resources.
@@ -32,7 +32,6 @@ self.addEventListener('install', function(event) {
         /* HTML */
         '/',
         '/index.html',
-        '/restaurant.html',
         /* Javascript */
         'js/main.js',
         'js/dbhelper.js',
@@ -57,13 +56,13 @@ self.addEventListener('install', function(event) {
  */
 self.addEventListener('activate', function(event) {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
+    caches.keys().then(cacheNames => {
       return Promise.all(
-        cacheNames.filter((cacheName) => {
-          cacheName.startsWith('restaurant-reviews-') &&
-          cacheName !== staticCacheName
-        }).map((cacheName) => {
-          caches.delete(cacheName)
+        cacheNames.filter(cacheName => {
+          return cacheName.startsWith('restaurant-reviews-') &&
+                              cacheName !== staticCacheName
+        }).map(cacheName => {
+          return caches.delete(cacheName)
         })
       )
     })
