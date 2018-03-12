@@ -41,8 +41,18 @@ self.addEventListener('install', function(event) {
         /* CSS */
         'css/styles.css',
         'css/normalize.min.css',
-        /* Fonts */
-        'https://fonts.googleapis.com/css?family=Playfair+Display|Roboto',
+        'css/fonts.css',
+        /* Font files */
+        'fonts/playfair-display-v13-latin-regular.eot',
+        'fonts/playfair-display-v13-latin-regular.svg',
+        'fonts/playfair-display-v13-latin-regular.ttf',
+        'fonts/playfair-display-v13-latin-regular.woff',
+        'fonts/playfair-display-v13-latin-regular.woff2',
+        'fonts/roboto-v18-latin-regular.eot',
+        'fonts/roboto-v18-latin-regular.svg',
+        'fonts/roboto-v18-latin-regular.ttf',
+        'fonts/roboto-v18-latin-regular.woff',
+        'fonts/roboto-v18-latin-regular.woff2',
         /* in the stage 1 the data is static so we can cache it */
         'data/restaurants.json',
         ...itemUrls
@@ -77,11 +87,10 @@ self.addEventListener('fetch', function(event) {
     caches.match(event.request).then(
       (response) => response || fetch(event.request)
     ).catch(function() {
-      // If both fail, show a generic fallback:
-      console.error('Resource not available offline', event.request);
       if (event.request.url.startsWith('https://maps.googleapis.com/maps/api/js')) {
         return caches.match('/js/gmap-offline.js');
       }
+      console.error('Resource not available offline', event.request);
       return new Response('Not available');
     })
   );
