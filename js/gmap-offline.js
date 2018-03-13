@@ -6,8 +6,6 @@ if (typeof updateRestaurants !== 'undefined') {
   fetchRestaurantFromURL(error => {
     if (error) { // Got an error!
       console.error(error);
-    } else {
-      fillBreadcrumb();
     }
   })
 }
