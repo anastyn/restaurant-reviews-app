@@ -1,11 +1,3 @@
-if (navigator.serviceWorker) {
-    navigator.serviceWorker.register('sw.js')
-      .then(reg => console.log('Successfully registered Service Worker.', reg))
-      .catch(err => console.error("Could not register Service Worker.", err));
-} else {
-  console.log('Service Worker functionality is not available.');
-}
-
 let restaurants,
   neighborhoods,
   cuisines

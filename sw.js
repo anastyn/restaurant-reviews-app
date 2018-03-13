@@ -33,6 +33,7 @@ self.addEventListener('install', function(event) {
         '/',
         '/index.html',
         /* Javascript */
+        'js/sw_register.js',
         'js/main.js',
         'js/dbhelper.js',
         'js/picture_factory.js',
