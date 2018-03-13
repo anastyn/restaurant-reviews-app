@@ -142,14 +142,14 @@ class DBHelper {
    * Restaurant page URL.
    */
   static urlForRestaurant(restaurant) {
-    return (`./restaurant.html?id=${restaurant.id}`);
+    return (`https://anastyn.github.io/restaurant-reviews-app/restaurant.html?id=${restaurant.id}`);
   }
 
   /**
    * Restaurant image URL.
    */
   static imageUrlForRestaurant(restaurant) {
-    const imgDir = '/restaurant-reviews-app/img';
+    const imgDir = 'https://anastyn.github.io/restaurant-reviews-app/img';
     const original = restaurant.photograph;
     const [ imageName, imageExtension ] = original.split('.');
 

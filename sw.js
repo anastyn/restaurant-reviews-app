@@ -7,6 +7,7 @@
  *
  * */
 const staticCacheName = 'restaurant-reviews-static-v1';
+const prefix = 'https://anastyn.github.io/restaurant-reviews-app';
 
 /**
  * Cache all static resources.
@@ -17,45 +18,45 @@ self.addEventListener('install', function(event) {
       const itemUrls = [];
       for (let index = 1; index <= 10; index++) {
         // restaurant review page
-        itemUrls.push(`/restaurant.html?id=${index}`);
+        itemUrls.push(`${prefix}/restaurant.html?id=${index}`);
         // restaurant images
-        itemUrls.push(`img/${index}-large.jpg`);
-        itemUrls.push(`img/${index}-large_2x.jpg`);
-        itemUrls.push(`img/${index}-medium.jpg`);
-        itemUrls.push(`img/${index}-medium_2x.jpg`);
-        itemUrls.push(`img/${index}-small.jpg`);
+        itemUrls.push(`${prefix}/img/${index}-large.jpg`);
+        itemUrls.push(`${prefix}/img/${index}-large_2x.jpg`);
+        itemUrls.push(`${prefix}/img/${index}-medium.jpg`);
+        itemUrls.push(`${prefix}/img/${index}-medium_2x.jpg`);
+        itemUrls.push(`${prefix}/img/${index}-small.jpg`);
       }
 
       // addAll is atomic
       // uses fetch under the hood, so the requests will go via the browser cache first (something to keep in mind)
       return cache.addAll([
         /* HTML */
-        '/',
-        '/index.html',
+        `${prefix}/`,
+        `${prefix}/index.html`,
         /* Javascript */
-        'js/sw_register.js',
-        'js/main.js',
-        'js/dbhelper.js',
-        'js/picture_factory.js',
-        'js/restaurant_info.js',
-        'js/gmap-offline.js',
+        `${prefix}/js/sw_register.js`,
+        `${prefix}/js/main.js`,
+        `${prefix}/js/dbhelper.js`,
+        `${prefix}/js/picture_factory.js`,
+        `${prefix}/js/restaurant_info.js`,
+        `${prefix}/js/gmap-offline.js`,
         /* CSS */
-        'css/styles.css',
-        'css/normalize.min.css',
-        'css/fonts.css',
+        `${prefix}/css/styles.css`,
+        `${prefix}/css/normalize.min.css`,
+        `${prefix}/css/fonts.css`,
         /* Font files */
-        'fonts/playfair-display-v13-latin-regular.eot',
-        'fonts/playfair-display-v13-latin-regular.svg',
-        'fonts/playfair-display-v13-latin-regular.ttf',
-        'fonts/playfair-display-v13-latin-regular.woff',
-        'fonts/playfair-display-v13-latin-regular.woff2',
-        'fonts/roboto-v18-latin-regular.eot',
-        'fonts/roboto-v18-latin-regular.svg',
-        'fonts/roboto-v18-latin-regular.ttf',
-        'fonts/roboto-v18-latin-regular.woff',
-        'fonts/roboto-v18-latin-regular.woff2',
+        `${prefix}/fonts/playfair-display-v13-latin-regular.eot`,
+        `${prefix}/fonts/playfair-display-v13-latin-regular.svg`,
+        `${prefix}/fonts/playfair-display-v13-latin-regular.ttf`,
+        `${prefix}/fonts/playfair-display-v13-latin-regular.woff`,
+        `${prefix}/fonts/playfair-display-v13-latin-regular.woff2`,
+        `${prefix}/fonts/roboto-v18-latin-regular.eot`,
+        `${prefix}/fonts/roboto-v18-latin-regular.svg`,
+        `${prefix}/fonts/roboto-v18-latin-regular.ttf`,
+        `${prefix}/fonts/roboto-v18-latin-regular.woff`,
+        `${prefix}/fonts/roboto-v18-latin-regular.woff2`,
         /* in the stage 1 the data is static so we can cache it */
-        'data/restaurants.json',
+        `${prefix}/data/restaurants.json`,
         ...itemUrls
       ]);
     })
@@ -89,7 +90,7 @@ self.addEventListener('fetch', function(event) {
       (response) => response || fetch(event.request)
     ).catch(function() {
       if (event.request.url.startsWith('https://maps.googleapis.com/maps/api/js')) {
-        return caches.match('/js/gmap-offline.js');
+        return caches.match(`${prefix}/js/gmap-offline.js`);
       }
       console.error('Resource not available offline', event.request);
       return new Response('Not available');
