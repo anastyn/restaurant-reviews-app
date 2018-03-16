@@ -86,8 +86,10 @@ footer {
   padding: 0 5px;
 }
 /* ====================== Navigation ====================== */
-nav {
+header nav {
   height: 100%;
+}
+nav {
   background-color: #252831;
   text-align:center;
 }
