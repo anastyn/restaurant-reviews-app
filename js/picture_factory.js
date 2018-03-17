@@ -22,7 +22,7 @@ const initPicture = (restaurant, $picture) => {
   const image = document.createElement('img');
   image.src = srcSets['original'];
   image.className = 'restaurant-img';
-  image.alt = restaurant.name;
+  image.alt = 'Restaurant ' + restaurant.name;
   $picture.appendChild(image);
 
 };
