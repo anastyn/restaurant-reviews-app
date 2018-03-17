@@ -57,9 +57,9 @@ python -m http.server 8000
 5) Improved accessibility for people with disabilities:
 
     - added alt attributes to the images
-    - added ARIA labels to the select elements
+    - added ARIA attributes to various elements, including google maps, breadcrumbs, selects, and others.
     - improved colour contrast to conform to Web Content Accessibility Guidelines
     - changed font sizes
     
 6) Styled the restaurant review cards.
-7) Made the app available offline by implementing a Service Worker and by caching all resources and data. Added an overlay to show an error message if Google Maps are not available.
+7) Made the app available **offline** by implementing a Service Worker and by caching all resources and data. Added an overlay to show an error message if Google Maps are not available.
