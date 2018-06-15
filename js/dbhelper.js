@@ -8,46 +8,43 @@ class DBHelper {
    * Change this to restaurants.json file location on your server.
    */
   static get DATABASE_URL() {
-    const port = 8000 // Change this to your server port
-    return `http://localhost:${port}/data/restaurants.json`;
+    const host = 'localhost';
+    const port = 1337;
+    return `http://${host}:${port}/restaurants`;
   }
+
+  /**
+   * Fetch the url with proper results and error handling
+   * @param {*} url 
+   * @param {*} callback 
+   */
+  static fetchUrl(url, callback) {
+    fetch(url)
+      .then(function(response) {
+        if(response.ok) {
+          return response.json();
+        }
+        const error = `Request failed. Returned status of ${response.status}`;
+        throw new Error(error);
+      }).then(function(json){
+        callback(null, json);
+      }).catch(function(error){
+        callback(error, null);
+      });
+  };
 
   /**
    * Fetch all restaurants.
    */
   static fetchRestaurants(callback) {
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', DBHelper.DATABASE_URL);
-    xhr.onload = () => {
-      if (xhr.status === 200) { // Got a success response from server!
-        const json = JSON.parse(xhr.responseText);
-        const restaurants = json.restaurants;
-        callback(null, restaurants);
-      } else { // Oops!. Got an error from server.
-        const error = (`Request failed. Returned status of ${xhr.status}`);
-        callback(error, null);
-      }
-    };
-    xhr.send();
+    DBHelper.fetchUrl(DBHelper.DATABASE_URL, callback);
   }
 
   /**
    * Fetch a restaurant by its ID.
    */
   static fetchRestaurantById(id, callback) {
-    // fetch all restaurants with proper error handling.
-    DBHelper.fetchRestaurants((error, restaurants) => {
-      if (error) {
-        callback(error, null);
-      } else {
-        const restaurant = restaurants.find(r => r.id == id);
-        if (restaurant) { // Got the restaurant
-          callback(null, restaurant);
-        } else { // Restaurant does not exist in the database
-          callback('Restaurant does not exist', null);
-        }
-      }
-    });
+    DBHelper.fetchUrl(`${DBHelper.DATABASE_URL}/${id}`, callback);
   }
 
   /**
@@ -151,8 +148,8 @@ class DBHelper {
    */
   static imageUrlForRestaurant(restaurant) {
     const imgDir = '/img';
-    const original = restaurant.photograph;
-    const [ imageName, imageExtension ] = original.split('.');
+    const imageExtension = 'jpg';
+    const imageName = restaurant.photograph;
 
     const generateSrcSet = (suffix) =>
       `${imgDir}/${imageName}-${suffix}.${imageExtension} 1x, ${imgDir}/${imageName}-${suffix}_2x.${imageExtension} 2x`;
