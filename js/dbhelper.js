@@ -37,14 +37,14 @@ class DBHelper {
    * Fetch all restaurants.
    */
   static fetchRestaurants(callback) {
-    DBHelper.fetchUrl(DBHelper.DATABASE_URL, callback);
+    DBHelper.fetchUrl(DATA_URL, callback);
   }
 
   /**
    * Fetch a restaurant by its ID.
    */
   static fetchRestaurantById(id, callback) {
-    DBHelper.fetchUrl(`${DBHelper.DATABASE_URL}/${id}`, callback);
+    DBHelper.fetchUrl(`${DATA_URL}/${id}`, callback);
   }
 
   /**
