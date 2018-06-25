@@ -1,4 +1,4 @@
-# Restaurant Reviews web app - Stage 1 
+# Restaurant Reviews web app - Stage 2 
 The original code was forked(duplicated) from the Udacity's [Mobile Web Specialist Stage 1](https://github.com/udacity/mws-restaurant-stage-1) repository.  
 
 The starter code can be found in [starter](https://github.com/anastyn/restaurant-reviews-app/tree/starter) branch.
@@ -9,10 +9,6 @@ The starter code can be found in [starter](https://github.com/anastyn/restaurant
 You have been provided the code for a restaurant reviews website. The code has a lot of issues. It’s barely usable on a desktop browser, much less a mobile device. It also doesn’t include any standard accessibility features, and it doesn’t work offline at all. Your job is to update the code to resolve these issues while still maintaining the included functionality. 
 
 ## Implementation
-
-The modified application is also deployed to the GitHub Pages:
-
-[https://anastyn.github.io/restaurant-reviews-app/](https://anastyn.github.io/restaurant-reviews-app/) 
 
 ### Installing and building the project
 Install Grunt
@@ -62,4 +58,5 @@ python -m http.server 8000
     - changed font sizes
     
 6) Styled the restaurant review cards.
-7) Made the app available **offline** by implementing a Service Worker and by caching all resources and data. Added an overlay to show an error message if Google Maps are not available.
+7) Made the app available **offline** by implementing a Service Worker and by caching all resources and data. Added an overlay to show an error message if Google Maps are not available. It uses Cache API to cache URL resources and IndexedDB to cache data.
+8) Added an app manifest file.
