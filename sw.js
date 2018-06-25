@@ -37,6 +37,8 @@ self.addEventListener('install', function(event) {
       // addAll is atomic
       // uses fetch under the hood, so the requests will go via the browser cache first (something to keep in mind)
       return cache.addAll([
+        /* app manifest */
+        'manifest.json',
         /* HTML */
         '/',
         '/index.html',
