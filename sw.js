@@ -11,6 +11,8 @@
 self.importScripts('/js/idb.js');
 self.importScripts('/js/settings.js');
 
+const databaseName = 'restaurants';
+const objectStoreName = 'restaurantsOS';
 const idbVersion = 1;
 const staticCacheName = 'restaurant-reviews-static-v1';
 const restaurantByIdUrl = new RegExp(DATA_URL + '\/(\\d+)\/?');
@@ -105,18 +107,18 @@ self.addEventListener('fetch', function(event) {
 
   if (restaurantByIdMatch) {  
     event.respondWith(
-      idb.open('restaurants', 1).then(function(db) {
-        var tx = db.transaction(['restaurantsOS'], 'readonly');
-        return tx.objectStore('restaurantsOS').get(parseInt(restaurantByIdMatch[1]));
+      idb.open(databaseName, idbVersion).then(function(db) {
+        var tx = db.transaction([objectStoreName], 'readonly');
+        return tx.objectStore(objectStoreName).get(parseInt(restaurantByIdMatch[1]));
       }).then(function(restaurants) {
         return new Response(JSON.stringify(restaurants));
       })
     )
   } else if (event.request.url === DATA_URL) {
     event.respondWith(
-      idb.open('restaurants', 1).then(function(db) {
-        var tx = db.transaction(['restaurantsOS'], 'readonly');
-        return tx.objectStore('restaurantsOS').getAll();
+      idb.open(databaseName, idbVersion).then(function(db) {
+        var tx = db.transaction([objectStoreName], 'readonly');
+        return tx.objectStore(objectStoreName).getAll();
       }).then(function(restaurants) {
         return new Response(JSON.stringify(restaurants));
       })
@@ -141,10 +143,10 @@ self.addEventListener('fetch', function(event) {
  */
 function createDatabase() {
   console.log('creating database');
-  idb.open('restaurants', idbVersion, function(upgradeDB) {
-    if (!upgradeDB.objectStoreNames.contains('restaurantsOS')) {
+  idb.open(databaseName, idbVersion, function(upgradeDB) {
+    if (!upgradeDB.objectStoreNames.contains(objectStoreName)) {
       // create the database and fetch the data
-      var store = upgradeDB.createObjectStore('restaurantsOS', {
+      var store = upgradeDB.createObjectStore(objectStoreName, {
         keyPath: 'id'
       });
       // store.createIndex('neighborhood', 'neighborhood', {unique: false});
@@ -161,8 +163,8 @@ function createDatabase() {
     }).then(function(restaurants) {
       console.log('returned data', restaurants);
       
-      const tx = db.transaction(['restaurantsOS'], 'readwrite');
-      const store = tx.objectStore('restaurantsOS');
+      const tx = db.transaction([objectStoreName], 'readwrite');
+      const store = tx.objectStore(objectStoreName);
 
       for (const restaurant of restaurants) {
         store.put(restaurant);
